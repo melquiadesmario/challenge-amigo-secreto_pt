@@ -10,7 +10,6 @@ function adicionarAmigo() {
     amigos.push(nomeAmigo);
     limparCampoAmigo();
     listarAmigos(amigos); 
-    console.log(`Amigos: ${amigos}`);
   }
 
   return amigos;
@@ -41,9 +40,15 @@ function listarAmigos(nome) {
 }
 
 function sortearAmigo() {
-    if (amigos.length === 0) {
-        return 'Nenhum amigo cadastrado.';
-    }
+  const ulElemento = document.getElementById("resultado");
+
+  if (amigos.length === 0) {
+      alert('Nenhum amigo cadastrado.');
+      return;
+  }else{
     let amigoSorteado = amigos[Math.floor(Math.random() * amigos.length)];
-    return `O amigo sorteado é: ${amigoSorteado}`;
+    const texto = document.createElement("li");
+    texto.textContent = `O amigo secreto sorteado é: ${amigoSorteado}`;
+    ulElemento.appendChild(texto);
+  }
 }
